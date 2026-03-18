@@ -16,13 +16,13 @@ import os
 BASE_DIR=Path(__file__).resolve().parent.parent
 STATIC_ROOT = BASE_DIR / 'productionfiles'
 
-MEDIA_URL = '/files/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATIC_URL = 'static/'
 STATIC_URL='/static/'
 STATICFILES_DIRS=[
     # os.path.join(BASE_DIR,'static'),
-    BASE_DIR / 'mystaticfiles',
+    BASE_DIR / 'static',
     # os.path.join(BASE_DIR,'mystaticfiles'),
 ]
 
