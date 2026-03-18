@@ -1,0 +1,21 @@
+{% extends "master.html" %}
+
+{% block title %}
+  My Djangoproject - List of all members
+{% endblock %}
+
+
+{% block content %}
+  <div class="mycard">
+    <h1>Members</h1>
+    <ul>
+      {% for x in mymembers %}
+        <li onclick="window.location = 'details/{{ x.id }}'">{{ x.fname }} {{ x.lname }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}             
+
+
+
+

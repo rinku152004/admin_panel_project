@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{% static 'myglobal.css' %}">
+<body>
+  
+{% if greeting == 1 %}
+  <h1>Hello Rinku...How are you...!</h1>
+{% else %}
+  <h1>Bye</h1>
+{% endif %}
+<ul>
+  {% for x in mymembers %}
+    <li style="color:  {% cycle 'red' 'green' 'blueviolet' 'purple' 'black' 'goldenrod' 'palevioletred' 'orange' %} ">
+    <!-- <li>   -->
+      {{ x.fname }}
+    </li>
+  {% endfor %}
+</ul>
+{% for x in fruits %}
+  <h3 style="color: goldenrod ">{{ x }}</h3>
+{% endfor %}
+
+<p>The queryset object:</p>
+{{ mymembers }}
+
+<p>Loop through the items:</p>
+
+<table border="2">
+  <tr>
+    <th>ID</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Phone</th>
+    <th>Join Date</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Image</th>
+    <!-- <th>FileUploaded</th> -->
+  </tr>
+  {% for x in mymembers %}
+    <tr>
+      <td>{{ x.id }}</td>
+      <td>{{ x.fname }}</td>
+      <td>{{ x.lname }}</td>
+      <td>{{ x.phone }}</td>
+      <td>{{ x.join_date }}</td>
+      <td>{{ x.email }}</td>
+      <td>{{ x.address }}</td>
+      <td><img src="{{ x.image.url }}" alt="{{ x.fname }}" width="100"></td>
+      <!-- <td><img src="{{x.file.url}}" alt="{{x.fname}}" width="100"></td> -->
+    </tr>
+  {% endfor %}
+</table>
+
+<p>In views.py you can see what the fruits variable looks like.</p>
+
+</body>
+</html>
