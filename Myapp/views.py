@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Member
@@ -27,8 +27,8 @@ def details(request, id):
   return HttpResponse(template.render(context, request))
 
 def main(request):
-  template = loader.get_template('Main.html')
-  return HttpResponse(template.render())
+  # template = loader.get_template('Main.html')
+  return render(request, "Main.html")
 
 def testing(request):
   # mymembers= Member.objects.values_list('fname', flat=True)
