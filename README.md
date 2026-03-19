@@ -45,6 +45,7 @@ project-root
 │   └── wsgi.py
 │
 ├── Myapp/                # Django application
+├── Vege/                
 │
 ├── files/                # Uploaded files
 ├── images/               # Image storage
