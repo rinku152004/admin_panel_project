@@ -47,9 +47,12 @@ project-root
 ├── Myapp/                # Django application
 ├── Vege/                
 │
-├── files/                # Uploaded files
-├── images/               # Image storage
-├── mystaticfiles/        # Static files (CSS, JS)
+├── media/
+│   ├── images/               # Image storage
+│   ├── files/                # Uploaded files
+│   ├── recipes/              # recipe files
+│
+├── static/               # Static files (CSS, JS)
 ├── productionfiles/      # Production static files
 ```
 
