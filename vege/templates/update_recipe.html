@@ -4,11 +4,12 @@
 
 <div class="container mt-5">
 
-<h2>Update Recipe</h2>
 
-<form method="POST" enctype="multipart/form-data">
+
+<form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
 
 {% csrf_token %}
+<h2>Update Recipe</h2>
 
 <input type="text" name="recipe_name" value="{{recipe.recipe_name}}" class="form-control mb-2">
 

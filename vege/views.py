@@ -32,6 +32,7 @@ def recipes(request):
 def delete_recipe(request, id):
     queryset = Recipe.objects.get(id=id)
     queryset.delete()
+    
     return redirect('/recipes/')
 
 def update_recipe(request, id):
@@ -47,7 +48,7 @@ def update_recipe(request, id):
             queryset.recipe_image = request.FILES.get('recipe_image')
 
         queryset.save()
-
+    
         return redirect('/recipes/')
 
     context = {'recipe': queryset}

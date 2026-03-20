@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container mt-5 ">
 
-<h2>Add Recipe</h2>
-
-<form method="POST" enctype="multipart/form-data">
+<form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data" >
 {% csrf_token %}
 
+<h2>Add Recipe</h2>
+<hr>
 <input type="text" name="recipe_name" class="form-control mb-2" placeholder="Recipe Name">
 
 <textarea name="recipe_ingredients" class="form-control mb-2" placeholder="Ingredients"></textarea>
@@ -20,10 +20,11 @@
 <button type="submit" class="btn btn-success">Add Recipe</button>
 
 </form>
-
+<hr>
+<h3>{{recipes.count}} Recipes Available</h3>
 <hr>
 
-<form method="GET">
+<form class="col-6 mx-auto card p-3 shadow-lg" method="GET">
 
 <div class="mb-3">
 <input type="text" name="search" class="form-control" placeholder="Search Recipe">
@@ -34,16 +35,16 @@
 </form>
 <br>
 <h2>Available Recipes</h2>
+<hr>
+<table class="table table-bordered col-6 mx-auto card p-3 shadow-lg">
 
-<table class="table table-bordered">
-
-<tr>
-<th>ID</th>
-<th>Name</th>
-<th>Ingredients</th>
-<th>Description</th>
-<th>Image</th>
-<th>Update</th>
+<tr class="table-primary">
+<th scope="col">ID</th>
+<th scope="col">Name</th>
+<th scope="col">Ingredients</th>
+<th scope="col">Description</th>
+<th scope="col">Image</th>
+<th scope="col">Update</th>
 </tr>
 
 {% for recipe in recipes %}
