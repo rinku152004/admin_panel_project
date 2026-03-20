@@ -10,18 +10,24 @@
 
 {% csrf_token %}
 <h2>Update Recipe</h2>
-
-<input type="text" name="recipe_name" value="{{recipe.recipe_name}}" class="form-control mb-2">
-
-<textarea name="recipe_ingredients" class="form-control mb-2">{{recipe.recipe_ingredients}}</textarea>
-
-<textarea name="recipe_description" class="form-control mb-2">{{recipe.recipe_description}}</textarea>
-
-<input type="file" name="recipe_image" class="form-control mb-2">
-
-<img src="{{recipe.recipe_image.url}}" width="150">
-
-<br><br>
+<div class="mb-3">
+    <label for="recipe_name">Recipe Name:</label>
+    <input type="text" name="recipe_name" value="{{recipe.recipe_name}}" class="form-control mb-2">
+</div>
+<div class="mb-3">
+    <label for="recipe_ingredients">Ingredients:</label>
+    <textarea name="recipe_ingredients" class="form-control mb-2">{{recipe.recipe_ingredients}}</textarea>
+</div>
+<div class="mb-3">
+    <label for="recipe_description">Description:</label>
+    <textarea name="recipe_description" class="form-control mb-2">{{recipe.recipe_description}}</textarea>
+</div>
+<div class="mb-3">
+    <label for="recipe_image">Recipe Image:</label>
+    <input type="file" name="recipe_image" class="form-control mb-2">
+    <img src="{{recipe.recipe_image.url}}" height="100" width="150" class="mt-2">
+</div>
+<br>
 
 <button type="submit" class="btn btn-success">Update Recipe</button>
 

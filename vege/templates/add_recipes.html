@@ -9,42 +9,55 @@
 
 <h2>Add Recipe</h2>
 <hr>
-<input type="text" name="recipe_name" class="form-control mb-2" placeholder="Recipe Name">
-
-<textarea name="recipe_ingredients" class="form-control mb-2" placeholder="Ingredients"></textarea>
-
-<textarea name="recipe_description" class="form-control mb-2" placeholder="Description"></textarea>
-
-<input type="file" name="recipe_image" class="form-control mb-2">
+<div class="mb-3">
+    <label for="recipe_name">Recipe Name:</label>
+    <input type="text" name="recipe_name" class="form-control mb-2" placeholder="Enter Recipe Name">
+</div>
+<div class="mb-3">
+    <label for="recipe_ingredients">Ingredients:</label>
+    <textarea name="recipe_ingredients" class="form-control mb-2" placeholder="Enter List of Ingredients"></textarea>
+</div>
+<div class="mb-3">
+    <label for="recipe_description">Description:</label>
+    <textarea name="recipe_description" class="form-control mb-2" placeholder="Enter Recipe Description"></textarea>
+</div>
+<div class="mb-3">
+    <label for="recipe_image">Recipe Image:</label>
+    <input type="file" name="recipe_image" class="form-control mb-2">
+</div>
 
 <button type="submit" class="btn btn-success">Add Recipe</button>
 
 </form>
-<hr>
+</div>
+<!-- <hr class="mt-5">
 <h3>{{recipes.count}} Recipes Available</h3>
-<hr>
+<hr> -->
 
-<form class="col-6 mx-auto card p-3 shadow-lg" method="GET">
-
-<div class="mb-3">
-<input type="text" name="search" class="form-control" placeholder="Search Recipe">
+<div class="mt-5">
+    <div class="col-6 mx-auto card p-3 shadow-lg">
+        <form method="GET">
+            <div class="mb-3">
+                <label for="search" class="form-label">Search Food:</label>
+                <input type="text" name="search" class="form-control" placeholder="Search for Recipe">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
 </div>
 
-<button class="btn btn-primary">Search</button>
-
-</form>
 <br>
 <h2>Available Recipes</h2>
 <hr>
 <table class="table table-bordered col-6 mx-auto card p-3 shadow-lg">
 
 <tr class="table-primary">
-<th scope="col">ID</th>
-<th scope="col">Name</th>
-<th scope="col">Ingredients</th>
-<th scope="col">Description</th>
-<th scope="col">Image</th>
-<th scope="col">Update</th>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Ingredients</th>
+    <th scope="col">Description</th>
+    <th scope="col">Image</th>
+    <th scope="col">Update</th>
 </tr>
 
 {% for recipe in recipes %}
@@ -57,11 +70,11 @@
 <td>{{recipe.recipe_description}}</td>
 
 <td>
-<img src="/media/{{recipe.recipe_image}}" width="100">
+<img src="/media/{{recipe.recipe_image}}" height="100" width="150">
 </td>
 
 <td>
-<a href="/update_recipe/{{recipe.id}}/" class="btn btn-primary">Edit</a><br>
+<a href="/update_recipe/{{recipe.id}}/" class="btn btn-primary m-2">Edit</a><br>
 <a href="/delete_recipe/{{recipe.id}}/" class="btn btn-danger">Delete</a>
 </td>
 
