@@ -26,8 +26,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('vege.urls')),
     path('', include('Myapp.urls')),
-    # path('testing/', views.testing, name='testing'),
+    path('login/', login_page, name='login_page'),
+    path('register/', register, name='register'),
     path('admin/', admin.site.urls),
+    path('recipes/', recipes, name='recipes'),
+    path('logout/', logout_page, name='logout_page'),
 ]
 
 if settings.DEBUG:
