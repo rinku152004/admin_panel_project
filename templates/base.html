@@ -59,15 +59,15 @@
 
 <div class="content">
 
-<nav class="navbar navbar-light bg-white shadow-sm mb-3">
+<nav class="navbar navbar-light bg-light mb-4 shadow-lg p-3 rounded">
 
 <div class="container-fluid">
 
-<span class="navbar-brand">
-Welcome {{request.user.username}}
+<span class="navbar-brand ml-auto ">
+Welcome {{request.user.username}} !
 </span>
 
-<a href="/logout/" class="btn btn-danger btn-sm">
+<a href="/accounts/logout/" class="btn btn-danger btn-sm">
 Logout
 </a>
 

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg p-4">
+
+        <h3>Edit User</h3>
+        <hr>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" value="{{ user.username }}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Role</label>
+                <select name="role_type" class="form-control">
+                    <option value="super_admin" {% if user.role_type == "super_admin" %}selected{% endif %}>Super Admin</option>
+                    <option value="admin" {% if user.role_type == "admin" %}selected{% endif %}>Admin</option>
+                    <option value="sub_admin" {% if user.role_type == "sub_admin" %}selected{% endif %}>Sub Admin</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Level</label>
+                <input type="number" name="level" value="{{ user.level }}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Parent Admin</label>
+                <input type="text" value="{{ user.parent_admin.username }}" class="form-control" readonly>
+            </div>
+
+            <button type="submit" class="btn btn-success">Update User</button>
+
+            <a href="{% url 'account_list' %}" class="btn btn-secondary">Cancel</a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

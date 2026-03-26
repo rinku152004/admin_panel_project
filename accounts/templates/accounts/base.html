@@ -51,8 +51,8 @@
 <a href="/dashboard/">Dashboard</a>
 <a href="/dashboard/admins/">Admin Management</a>
 <a href="/accounts/create-admin/">Create Admin</a>
-<a href="#">Roles</a>
-<a href="#">Reports</a>
+<a href="/roles/">Roles</a>
+<a href="/accounts/reports/">Reports</a>
 
 </div>
 
@@ -62,11 +62,9 @@
 
 <div class="container-fluid">
 
-<span class="navbar-brand">
-Welcome {{request.user.username}}
-</span>
+<span class="navbar-text">Welcome, {{request.user.username}} !</span>
 
-<a href="/logout/" class="btn btn-danger btn-sm">
+<a href="/logout/" class="btn btn-primary btn-sm">
 Logout
 </a>
 

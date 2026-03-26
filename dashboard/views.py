@@ -39,6 +39,7 @@ def reports(request):
 @login_required(login_url='/accounts/login/')
 def admin_tree(request):
 
-    admins = User.objects.filter(parent_admin=None)
+    admins = User.objects.filter(parent_admin=None, role_type='super_admin')
 
     return render(request, "dashboard/admin_tree.html", {"admins": admins})
+
