@@ -90,6 +90,10 @@ This structure allows **hierarchical control of administrators and roles**.
 
 ![Role Screenshot](screenshots/roles.png)
 
+## Hierarchy
+
+![Hierarchy](screenshots/hierarchy.png)
+
 ## Create Admin
 
 ![Create Admin](screenshots/create_admin.png)
