@@ -1,83 +1,174 @@
-# Django Web Application
+# 🚀 Admin Panel Management System
 
-## Overview
+A **Django-based Admin Panel Management System** that supports hierarchical admin creation, role-based access control, and a centralized dashboard for managing users and roles.
 
-This project is a Django-based web application developed during my internship.
-It demonstrates backend development using Django with support for file uploads, static file handling, and media file management.
-
----
-
-## Features
-
-* Django backend framework
-* File upload functionality
-* Static file management
-* Media file handling
-* Admin panel support
-* Organized project structure
+This project demonstrates how a **Main Admin can create Sub-Admins, assign roles, and control access through permissions**.
 
 ---
 
-## Technologies Used
+# 📌 Features
 
-* Python
-* Django
-* HTML
-* CSS
-* SQLite
+✔ Dynamic Admin Creation
+✔ Role-Based Access Control (RBAC)
+✔ Hierarchical Admin Structure
+✔ Dashboard for System Overview
+✔ Secure Authentication System
+✔ Admin & Sub-Admin Management
+✔ Clean and Responsive Interface
 
 ---
 
-## Project Structure
+# 🛠️ Technologies Used
 
-```
-project-root
+| Technology      | Purpose             |
+| --------------- | ------------------- |
+| Python          | Backend programming |
+| Django          | Web framework       |
+| HTML            | Frontend structure  |
+| CSS / Bootstrap | Styling             |
+| SQLite          | Database            |
+
+---
+
+# 📂 Project Structure
+
+```text
+admin_panel_project/
 │
-├── manage.py
-├── requirements.txt
-├── README.md
-├── .gitignore
-│
-├── Djangoproject/        # Django project configuration
-│   ├── __init__.py
+├── admin_panel_project/      # Main Django project
 │   ├── settings.py
 │   ├── urls.py
-│   └── wsgi.py
+│   ├── asgi.py
+│   ├── wsgi.py
 │
-├── Myapp/                # Django application
-├── Vege/                
+├── accounts/                 # Authentication and admin users
 │
-├── media/
-│   ├── images/               # Image storage
-│   ├── files/                # Uploaded files
-│   ├── recipes/              # recipe files
+├── roles/                    # Role and permission management
 │
-├── static/               # Static files (CSS, JS)
-├── productionfiles/      # Production static files
+├── dashboard/                # Admin dashboard views
+│
+├── templates/                # HTML templates
+│
+├── static/                   # CSS, JS, images
+│
+├── manage.py
+│
+└── README.md
 ```
 
 ---
 
-## Installation & Setup
+# 📊 System Architecture
 
-### 1 Install dependencies
+```
+Main Admin
+   │
+   ├── Sub Admin Level 1
+   │       │
+   │       ├── Sub Admin Level 2
+   │       │
+   │       └── Assigned Roles
+   │
+   └── Dashboard Management
+```
 
-pip install -r requirements.txt
-
-### 2 Run the development server
-
-python manage.py runserver
-
-### 3 Open in browser
-
-http://127.0.0.1:8000/
+This structure allows **hierarchical control of administrators and roles**.
 
 ---
 
-## Author
+# 🖥️ Project Screenshots
+
+## Login Page
+
+![Login Screenshot](screenshots/login.png)
+
+## Admin Dashboard
+
+![Dashboard Screenshot](screenshots/dashboard.png)
+
+## Role Management
+
+![Role Screenshot](screenshots/roles.png)
+
+---
+
+# ⚙️ Installation Guide
+
+### 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/YOUR_USERNAME/admin_panel_project.git
+```
+
+### 2️⃣ Navigate to Project Folder
+
+```
+cd admin_panel_project
+```
+
+### 3️⃣ Create Virtual Environment
+
+```
+python -m venv venv
+```
+
+### 4️⃣ Activate Environment
+
+Windows
+
+```
+venv\Scripts\activate
+```
+
+Linux / Mac
+
+```
+source venv/bin/activate
+```
+
+### 5️⃣ Install Dependencies
+
+```
+pip install -r requirements.txt
+```
+
+### 6️⃣ Run Migrations
+
+```
+python manage.py migrate
+```
+
+### 7️⃣ Create Superuser
+
+```
+python manage.py createsuperuser
+```
+
+### 8️⃣ Run Server
+
+```
+python manage.py runserver
+```
+
+Open:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# 👨‍💻 Author
 
 **Rinku Metaliya**
 Computer Engineering Student
 Government Engineering College Rajkot
 
+LinkedIn
+https://www.linkedin.com/in/gecr-comp220200107104
+
 ---
+
+# 📜 License
+
+This project is developed for **learning, academic, and internship purposes**.
