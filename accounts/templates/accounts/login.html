@@ -41,14 +41,13 @@ body{
 {% csrf_token %}
 
 <h3 class="login-title mb-4">Admin Login</h3>
-
-{% if messages %}
+<!-- {% if messages %}
     {% for message in messages %}
-        <div class="alert alert-success">
+        <div class="alert alert-{{ message.tags }}">
             {{ message }}
         </div>
     {% endfor %}
-{% endif %}
+{% endif %} -->
 
 <div class="mb-3">
 <label class="form-label">Username</label>

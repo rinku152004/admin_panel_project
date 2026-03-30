@@ -20,7 +20,8 @@ from django.shortcuts import redirect
 from django.conf import settings
 from django.conf.urls.static import static
 from dashboard.views import home
-from accounts import views as accounts_views
+
+# from accounts import views as accounts_views
 urlpatterns = [
     path('', home, name='home'),
     path('', lambda request: redirect('/dashboard/'), name='home_redirect'),

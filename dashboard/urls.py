@@ -5,7 +5,7 @@ urlpatterns = [
 
     path('', views.dashboard, name='dashboard'),
     path('admins/', views.admin_list, name='admin_list'),
-    path('admin-tree/', views.admin_tree, name='admin_tree'),
+    path('admin_tree/', views.admin_tree, name='admin_tree'),
     path('reports/', views.reports, name='reports'),
     
 ]

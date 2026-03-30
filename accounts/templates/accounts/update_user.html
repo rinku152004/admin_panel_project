@@ -2,6 +2,7 @@
 
 {% block content %}
 
+
 <div class="container mt-5">
 
     <div class="card shadow-lg p-4">
@@ -32,13 +33,22 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Parent Admin</label>
-                <input type="text" value="{{ user.parent_admin.username }}" class="form-control" readonly>
+            <label class="form-label">Parent Admin</label>
+
+            <select name="parent_admin" class="form-control">
+            {% for admin in admins %}
+            <option value="{{ admin.id }}"
+            {% if user.parent_admin and user.parent_admin.id == admin.id %}selected{% endif %}>
+            {{ admin.username }}
+            </option>
+            {% endfor %}
+            </select>
+
             </div>
 
             <button type="submit" class="btn btn-success">Update User</button>
 
-            <a href="{% url 'account_list' %}" class="btn btn-secondary">Cancel</a>
+            <a href="{% url 'admin_list' %}" class="btn btn-secondary">Cancel</a>
 
         </form>
 

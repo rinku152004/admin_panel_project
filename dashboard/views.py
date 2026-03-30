@@ -3,12 +3,12 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import User
 from roles.models import Role
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def home(request):
     return redirect('/dashboard/')
 
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def dashboard(request):
     total_users=User.objects.count()
     total_admins=User.objects.filter(role_type="admin").count()
@@ -27,20 +27,28 @@ def dashboard(request):
     return render(request, "dashboard/dashboard.html",context)
 
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def admin_list(request):
 
-    admins = User.objects.all().order_by('level','id')
+    query = request.GET.get('q')
+    if query:
+        admins = User.objects.select_related('parent_admin').filter(username__icontains=query).order_by('level','id')
+    else:
+        admins = User.objects.select_related('parent_admin').all().order_by('level','id')
 
     return render(request, "dashboard/admin_list.html", {"admins": admins})
 
-@login_required(login_url='/accounts/login/')
+    # admins = User.objects.all().order_by('level','id')
+
+    # return render(request, "dashboard/admin_list.html", {"admins": admins})
+
+@login_required
 def reports(request):
 
     return render(request, "dashboard/reports.html")
 
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def admin_tree(request):
 
     admins = User.objects.filter(parent_admin=None, role_type='super_admin')
