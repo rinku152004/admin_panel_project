@@ -5,6 +5,17 @@ from django.contrib import messages
 from .models import User
 
 
+# ----------------- UPDATE LEVEL OF CHILD ---------------
+
+def update_child_levels(user):
+    children = User.objects.filter(parent_admin=user)
+
+    for child in children:
+        child.level = user.level + 1
+        child.save()
+
+        update_child_levels(child)
+
 # ---------------- LOGIN ----------------
 
 def login_view(request):
@@ -158,6 +169,8 @@ def edit_admin(request, id):
 
         user.save()
 
+        update_child_levels(user)
+
         if request.user.id == user.id and password:
             update_session_auth_hash(request, user)
 
@@ -201,3 +214,4 @@ def toggle_admin_status(request, id):
 
 def accounts_home(request):
     return redirect("admin_list")
+
