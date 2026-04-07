@@ -2,7 +2,17 @@
 
 {% block content %}
 
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
 <h3>Admin List</h3>
+
 
 <a href="{% url 'toggle_admin' user.id %}" class="btn btn-secondary btn-sm mb-3 ">
     {% if user.is_active_admin %}
@@ -18,7 +28,7 @@ Create New Admin
 
 <form method="GET" class="mb-3">
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search admin_list..." name="q" value="{{ request.GET.q }}">
+        <input type="text" class="form-control" placeholder="Search Admins..." name="q" value="{{ request.GET.q }}">
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit">Search</button>
         </div>

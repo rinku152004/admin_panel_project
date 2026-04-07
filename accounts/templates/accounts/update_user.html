@@ -7,8 +7,19 @@
 
     <div class="card shadow-lg p-4">
 
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+        {% endif %}
+
         <h3>Edit User</h3>
         <hr>
+       
+        
 
         <form method="POST">
             {% csrf_token %}
