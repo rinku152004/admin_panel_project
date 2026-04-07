@@ -30,11 +30,16 @@ def dashboard(request):
 @login_required
 def admin_list(request):
 
-    query = request.GET.get('q')
-    if query:
-        admin_list = User.objects.select_related('parent_admin').filter(username__icontains=query).order_by('level','id')
+    if request.user.role_type == "super_admin":
+        admin_list=User.objects.all()
     else:
-        admin_list = User.objects.select_related('parent_admin').all().order_by('level','id')
+        admin_list=User.objects.filter(parent_admin=request.user)
+
+    # query = request.GET.get('q')
+    # if query:
+    #     admin_list = User.objects.select_related('parent_admin').filter(username__icontains=query).order_by('level','id')
+    # else:
+    #     admin_list = User.objects.select_related('parent_admin').all().order_by('level','id')
 
     return render(request, "dashboard/admin_list.html", {"admin_list": admin_list})
 

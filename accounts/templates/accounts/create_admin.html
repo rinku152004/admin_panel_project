@@ -49,6 +49,16 @@
 </select>
 
 </div>
+<div class="mb-3">
+<label>Assign Under Admin</label>
+<select name="parent_admin" class="form-control">
+    <option value="">None</option>
+    {% for admin in admins %}
+        <option value="{{ admin.id }}">{{ admin.username }}</option>
+    {% endfor %}
+</select>
+
+</div>
 
 
 <button class="btn btn-success">

@@ -58,34 +58,47 @@ def logout_view(request):
 @login_required
 def create_admin(request):
 
+    if request.user.role_type != "super_admin":
+        messages.warning(request, "You do not have permission to create new admins.")
+        return redirect("admin_list")
+    
+    # if User.objects.filter(username=username).exists():
+    #         messages.warning(request, "Username already exists")
+    #         return redirect("create_admin")
+
     if request.method == "POST":
 
         username = request.POST.get("username")
         password = request.POST.get("password")
         role_type = request.POST.get("role_type")
+        parent_admin_id = request.POST.get("parent_admin")
 
-        if request.user.role_type == "sub_admin" and role_type != "sub_admin":
-            messages.warning(request, "Sub Admin cannot create higher level admins")
-            return redirect("create_admin")
+        parent_admin=User.objects.get(id=parent_admin_id)
+            
+
+        # if request.user.role_type == "sub_admin" and role_type != "sub_admin":
+        #     messages.warning(request, "Sub Admin cannot create higher level admins")
+        #     return redirect("create_admin")
 
         if User.objects.filter(username=username).exists():
             messages.warning(request, "Username already exists")
             return redirect("create_admin")
-
+        
         user = User.objects.create_user(
             username=username,
             password=password,
             role_type=role_type
         )
 
-        user.parent_admin = request.user
-        user.level = request.user.level + 1
+        user.parent_admin = parent_admin
+        user.level = parent_admin.level + 1
         user.save()
 
-        messages.success(request, f"{role_type} created successfully")
+        messages.success(request, f"{role_type} assigned successfully")
         return redirect("create_admin")
+    admins=User.objects.filter(role_type="admin")
 
-    return render(request, "accounts/create_admin.html")
+    return render(request, "accounts/create_admin.html", {"admins": admins})
 
 
 # ---------------- DELETE ADMIN ----------------
@@ -95,11 +108,11 @@ def delete_admin(request, id):
 
     user = get_object_or_404(User, id=id)
 
-    if request.user.id == user.id:
-        messages.error(request, "You cannot delete your own account")
-        return redirect("admin_list")
+    # if request.user.id == user.id:
+    #     messages.error(request, "You cannot delete your own account")
+    #     return redirect("admin_list")
 
-    if request.user != user.parent_admin and request.user.role_type != "super_admin":
+    if request.user.role_type != "super_admin":
         messages.error(request, "You are not allowed to delete this user.")
         return redirect("admin_list")
 
@@ -126,7 +139,7 @@ def edit_admin(request, id):
 
     user = get_object_or_404(User, id=id)
 
-    if request.user.role_type != "super_admin" and user.parent_admin != request.user:
+    if request.user.role_type != "super_admin" :
         messages.error(request, "You don't have permission to edit this user.")
         return redirect("admin_list")
 
